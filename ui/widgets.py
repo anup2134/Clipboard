@@ -2,6 +2,7 @@ from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import (
     QWidget, QLabel, QPushButton, QHBoxLayout
 )
+import subprocess
 
 class ClickableLabel(QLabel):
     def __init__(self,text:str,main_self):
@@ -9,7 +10,7 @@ class ClickableLabel(QLabel):
         self.main_self = main_self
 
     def mousePressEvent(self, event):
-        print("Label clicked")
+        subprocess.run(['wl-copy'],input=self.text().encode())
         super().mousePressEvent(event)
         self.main_self.close()
 
@@ -71,5 +72,6 @@ def get_label(text:str,main_self):
             background-color: rgba(93, 110, 122, 0.3);
         }
     """)
+
 
     return label
