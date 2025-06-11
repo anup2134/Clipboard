@@ -10,7 +10,10 @@ class ClickableLabel(QLabel):
         self.main_self = main_self
 
     def mousePressEvent(self, event):
-        subprocess.run(['wl-copy'],input=self.text().encode())
+        subprocess.run(
+            ['xclip', '-selection', 'clipboard'],
+            input=self.text().encode()
+        )
         super().mousePressEvent(event)
         self.main_self.close()
 

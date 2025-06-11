@@ -22,7 +22,6 @@ class MainWindow(QMainWindow):
         if not history:
             layout.addWidget(get_label("Empty history",self))
         else:
-            print(len(history))
             for h in reversed(history):
                 label = get_label(h,self)
                 layout.addWidget(label)
