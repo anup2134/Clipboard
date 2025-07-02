@@ -8,12 +8,12 @@ import (
 	"os"
 )
 
-const socketPath = "/tmp/clipboard.sock"
 
 func connection(){
+    const socketPath = "/tmp/clipboard.sock"
     log.Println("Establishing connection with USD...")
-
 	os.Remove(socketPath)
+    
 	listener, err := net.Listen("unix", socketPath)
     if err != nil {
         panic(err)
@@ -24,7 +24,6 @@ func connection(){
 	for {
         conn, err := listener.Accept()
         if err != nil {
-            fmt.Println("Accept error:", err)
             continue
         }
         log.Println("Frontend connected.")
