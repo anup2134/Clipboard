@@ -81,7 +81,7 @@ func main(){
 	err = json.Unmarshal(data,&arr)
 	
 	if err != nil{
-		panic(err)
+		arr = []string{}
 	}
 
 	clipboardHistory = append(clipboardHistory, arr...)
