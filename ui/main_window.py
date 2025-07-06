@@ -18,8 +18,11 @@ class MainWindow(QMainWindow):
 
         top_bar_widget = TopBarWidget(self)
 
-        history = get_history()
-        if not history:
+        history, err = get_history()
+
+        if err != None:
+            layout.addWidget(get_label(f"Something went wrong: {err}",self))
+        elif len(history) == 0:
             layout.addWidget(get_label("Empty history",self))
         else:
             for h in reversed(history):

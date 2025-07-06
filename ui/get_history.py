@@ -16,8 +16,9 @@ def get_history():
 
         data = b''.join(chunks)
         history:list[str] = json.loads(data)
-        return history
+        return history, None
     except Exception as e:
         print(f"error in connection:{e}")
+        return None, e
     finally:
         client.close()
